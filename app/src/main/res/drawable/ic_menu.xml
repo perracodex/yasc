@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2023 Perraco Labs. All rights reserved.
+  ~ This work is licensed under the terms of the MIT license.
+  ~ For a copy, see <https://opensource.org/licenses/MIT>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M2,6C2,5.448 2.448,5 3,5L21,5C21.552,5 22,5.448 22,6C22,6.552 21.552,7 21,7L3,7C2.448,7 2,6.552 2,6Z"
+      android:fillColor="#ffffff"
+      android:fillType="nonZero"/>
+  <path
+      android:pathData="M2,12.032C2,11.48 2.448,11.032 3,11.032L21,11.032C21.552,11.032 22,11.48 22,12.032C22,12.585 21.552,13.032 21,13.032L3,13.032C2.448,13.032 2,12.585 2,12.032Z"
+      android:fillColor="#ffffff"
+      android:fillType="nonZero"/>
+  <path
+      android:pathData="M3,17.065C2.448,17.065 2,17.512 2,18.065C2,18.617 2.448,19.065 3,19.065L21,19.065C21.552,19.065 22,18.617 22,18.065C22,17.512 21.552,17.065 21,17.065L3,17.065Z"
+      android:fillColor="#ffffff"
+      android:fillType="nonZero"/>
+</vector>
