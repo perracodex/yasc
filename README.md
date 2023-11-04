@@ -18,3 +18,5 @@ switch between different themes.
 
 5. The overlay screenshot is eventually removed, leaving the UI with the new theme visible.
 
+### Demo:
+![Demo](demo.gif)
