@@ -5,7 +5,7 @@ switch between different themes.
 
 #### In addition, the next simple examples are also inclided:
 1. Full Navigation Drawer implementaiton in compose.
-2. A better way to Read/Write app settings using the DataStore.
+2. A more organized way to Read/Write app settings using the DataStore.
 3. NavHost example.
 
 ### How the theme animation works:
