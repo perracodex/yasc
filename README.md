@@ -8,7 +8,7 @@ switch between different themes.
 2. A better way to Read/Write app settings using the DataStore.
 3. NavHost example.
 
-### How The theme animation works:
+### How the theme animation works:
 1. When the transition is requested, a screenshot of the entire application is captured,
    before the theme change is applied.
 
