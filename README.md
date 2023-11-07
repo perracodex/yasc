@@ -3,7 +3,12 @@
 Demonstrates a ripple-like theme transition in Android Compose, offering a visually appealing
 switch between different themes.
 
-### How it works:
+#### In addition, the next simple examples are also inclided:
+1. Full Navigation Drawer implementaiton in compose.
+2. A better way to Read/Write app settings using the DataStore.
+3. NavHost example.
+
+### How The theme animation works:
 1. When the transition is requested, a screenshot of the entire application is captured,
    before the theme change is applied.
 
