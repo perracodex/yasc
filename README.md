@@ -3,7 +3,7 @@
 Demonstrates a ripple-like theme transition in Android Compose, offering a visually appealing
 switch between different themes.
 
-#### In addition, the next simple examples are also inclided:
+#### In addition, the next simple examples are also included:
 1. Full Navigation Drawer implementaiton in compose.
 2. A more organized way to Read/Write app settings using the DataStore.
 3. Application navigation example using NavHost.
