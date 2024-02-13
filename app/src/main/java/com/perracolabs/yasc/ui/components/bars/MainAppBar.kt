@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.VectorPainter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -36,8 +37,8 @@ fun MainAppBar(
     leadingAction: AppBarAction,
     trailingAction: AppBarAction?
 ) {
-    val leadingPainter = rememberVectorPainter(image = ImageVector.vectorResource(leadingAction.iconId))
-    val trailingPainter = trailingAction?.let {
+    val leadingPainter: VectorPainter = rememberVectorPainter(image = ImageVector.vectorResource(leadingAction.iconId))
+    val trailingPainter: VectorPainter? = trailingAction?.let {
         rememberVectorPainter(image = ImageVector.vectorResource(it.iconId))
     }
 

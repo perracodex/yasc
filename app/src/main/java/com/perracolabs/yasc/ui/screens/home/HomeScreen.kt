@@ -22,18 +22,20 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.perracolabs.yasc.R
+import com.perracolabs.yasc.ui.LocalDrawerState
 import com.perracolabs.yasc.ui.components.bars.AppBarAction
 import com.perracolabs.yasc.ui.components.bars.MainAppBar
 import com.perracolabs.yasc.ui.navigation.Route
 import com.perracolabs.yasc.ui.themes.ThemeLayout
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(drawerState: DrawerState) {
+fun HomeScreen() {
     val onAction = remember { mutableStateOf(false) }
 
     Scaffold(
-        topBar = { TopBar(drawerState = drawerState, onAction = onAction) },
+        topBar = { TopBar(onAction = onAction) },
         content = { innerPadding -> Content(innerPadding) }
     )
 
@@ -45,10 +47,11 @@ fun HomeScreen(drawerState: DrawerState) {
 }
 
 @Composable
-private fun TopBar(drawerState: DrawerState, onAction: MutableState<Boolean>) {
-    val scope = rememberCoroutineScope()
+private fun TopBar(onAction: MutableState<Boolean>) {
+    val drawerState: DrawerState = LocalDrawerState.current
+    val scope: CoroutineScope = rememberCoroutineScope()
 
-    val navigationAction = remember {
+    val navigationAction: AppBarAction = remember {
         AppBarAction(iconId = R.drawable.ic_menu, callback = {
             scope.launch {
                 drawerState.open()
@@ -56,7 +59,7 @@ private fun TopBar(drawerState: DrawerState, onAction: MutableState<Boolean>) {
         })
     }
 
-    val overflowAction = remember(drawerState.isClosed, onAction.value) {
+    val overflowAction: AppBarAction = remember(drawerState.isClosed, onAction.value) {
         AppBarAction(iconId = R.drawable.ic_overflow, callback = {
             if (drawerState.isClosed)
                 onAction.value = true
@@ -72,8 +75,8 @@ private fun TopBar(drawerState: DrawerState, onAction: MutableState<Boolean>) {
 
 @Composable
 private fun Content(innerPadding: PaddingValues) {
-    var selectedItem by remember { mutableIntStateOf(0) }
-    val items = listOf("Songs", "Artists", "Playlists")
+    var selectedItem: Int by remember { mutableIntStateOf(0) }
+    val items: List<String> = listOf("Songs", "Artists", "Playlists")
 
     Box(
         modifier = Modifier
@@ -118,7 +121,6 @@ private fun ShowMessage(onDismiss: () -> Unit) {
 @Composable
 fun PreviewHomeScreen() {
     ThemeLayout {
-        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        HomeScreen(drawerState = drawerState)
+        HomeScreen()
     }
 }

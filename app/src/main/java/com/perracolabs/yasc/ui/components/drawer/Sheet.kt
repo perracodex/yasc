@@ -19,13 +19,9 @@ import com.perracolabs.yasc.ui.themes.ThemeLayout
 
 /**
  * A Drawer Composable that displays the navigation items.
- *
- * @param navController The navigation controller to navigate between composables.
- * @param drawerState The state of the drawer to open or close it programmatically.
  */
 @Composable
-fun DrawerSheet(navController: NavController, drawerState: DrawerState) {
-
+fun DrawerSheet() {
     ModalDrawerSheet(
         drawerContainerColor = MaterialTheme.colorScheme.primary
     ) {
@@ -34,14 +30,8 @@ fun DrawerSheet(navController: NavController, drawerState: DrawerState) {
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.surface)
         ) {
-            DrawerHeader(
-                navController = navController,
-                drawerState = drawerState
-            )
-            DrawerContent(
-                navController = navController,
-                drawerState = drawerState
-            )
+            DrawerHeader()
+            DrawerContent()
         }
     }
 }
@@ -50,8 +40,6 @@ fun DrawerSheet(navController: NavController, drawerState: DrawerState) {
 @Composable
 fun PreviewDrawer() {
     ThemeLayout {
-        val navController = rememberNavController()
-        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        DrawerSheet(navController = navController, drawerState = drawerState)
+        DrawerSheet()
     }
 }

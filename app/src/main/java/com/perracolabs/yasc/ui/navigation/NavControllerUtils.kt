@@ -18,8 +18,7 @@ import androidx.navigation.Navigator
  * @param navigatorExtras Optional Navigator.Extras to customize the transition.
  */
 fun NavController.navigateSingleTop(route: Route, navigatorExtras: Navigator.Extras? = null) {
-
-    val navOptions = NavOptions.Builder()
+    val navOptions: NavOptions = NavOptions.Builder()
         .setLaunchSingleTop(singleTop = true)
         .setPopUpTo(route = route.name, inclusive = false)
         .build()

@@ -6,18 +6,15 @@
 
 package com.perracolabs.yasc.ui.screens.home
 
-import androidx.compose.material3.DrawerState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.perracolabs.yasc.ui.navigation.Route
 
 /**
  * Adds [HomeScreen] to NavGraph for easier reuse, readability, and maintainability.
- *
- * @param drawerState Reference to the drawer [DrawerState].
  */
-fun NavGraphBuilder.homeScreen(drawerState: DrawerState) {
+fun NavGraphBuilder.homeScreen() {
     composable(route = Route.HOME.name) {
-        HomeScreen(drawerState = drawerState)
+        HomeScreen()
     }
 }

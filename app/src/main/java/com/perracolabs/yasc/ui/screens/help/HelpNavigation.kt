@@ -6,18 +6,15 @@
 
 package com.perracolabs.yasc.ui.screens.help
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.perracolabs.yasc.ui.navigation.Route
 
 /**
  * Adds [HelpScreen] to NavGraph for easier reuse, readability, and maintainability.
- *
- * @param navController Reference to the navigation [NavController].
  */
-fun NavGraphBuilder.helpScreen(navController: NavController) {
+fun NavGraphBuilder.helpScreen() {
     composable(route = Route.HELP.name) {
-        HelpScreen(navController = navController)
+        HelpScreen()
     }
 }

@@ -35,8 +35,8 @@ fun ImageActionButton(
     iconTint: Color? = null,
     onClick: (Offset) -> Unit
 ) {
-    var centerOffset by remember { mutableStateOf(Offset(x = 0f, y = 0f)) }
-    val interactionSource = remember { MutableInteractionSource() }
+    var centerOffset: Offset by remember { mutableStateOf(Offset(x = 0f, y = 0f)) }
+    val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 
     Image(
         painter = icon,

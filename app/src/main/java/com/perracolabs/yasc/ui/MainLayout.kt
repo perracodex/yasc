@@ -7,12 +7,16 @@
 package com.perracolabs.yasc.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.perracolabs.yasc.ui.components.drawer.DrawerSheet
@@ -34,16 +38,21 @@ fun MainLayout(initialDrawerState: DrawerValue = DrawerValue.Closed) {
     val drawerState = rememberDrawerState(initialValue = initialDrawerState)
     val scope = rememberCoroutineScope()
 
-    ThemeLayout {
-        ModalNavigationDrawer(
-            drawerState = drawerState,
-            drawerContent = { DrawerSheet(navController = navController, drawerState = drawerState) }
-        ) {
-            NavHost(navController = navController, startDestination = Route.HOME.name) {
-                homeScreen(drawerState = drawerState)
-                detailScreen(navController = navController)
-                settingsScreen(navController = navController)
-                helpScreen(navController = navController)
+    CompositionLocalProvider(
+        LocalNavHostController provides navController,
+        LocalDrawerState provides drawerState
+    ) {
+        ThemeLayout {
+            ModalNavigationDrawer(
+                drawerState = drawerState,
+                drawerContent = { DrawerSheet() }
+            ) {
+                NavHost(navController = navController, startDestination = Route.HOME.name) {
+                    homeScreen()
+                    detailScreen()
+                    settingsScreen()
+                    helpScreen()
+                }
             }
         }
     }
@@ -54,6 +63,9 @@ fun MainLayout(initialDrawerState: DrawerValue = DrawerValue.Closed) {
         }
     }
 }
+
+val LocalDrawerState = compositionLocalOf<DrawerState> { error("No DrawerState found.") }
+val LocalNavHostController = compositionLocalOf<NavHostController> { error("No NavHostController found.") }
 
 @Preview(showBackground = true)
 @Composable

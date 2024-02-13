@@ -19,25 +19,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.perracolabs.yasc.R
+import com.perracolabs.yasc.ui.LocalNavHostController
 import com.perracolabs.yasc.ui.components.bars.AppBarAction
 import com.perracolabs.yasc.ui.components.bars.MainAppBar
 import com.perracolabs.yasc.ui.navigation.Route
 import com.perracolabs.yasc.ui.themes.ThemeLayout
 
 @Composable
-fun HelpScreen(navController: NavController) {
-
+fun HelpScreen() {
     Scaffold(
-        topBar = { TopBar(navController) },
+        topBar = { TopBar() },
         content = { innerPadding -> Content(innerPadding) }
     )
 }
 
 @Composable
-private fun TopBar(navController: NavController) {
-    val navigationAction = remember {
+private fun TopBar() {
+    val navController: NavController = LocalNavHostController.current
+
+    val navigationAction: AppBarAction = remember {
         AppBarAction(iconId = R.drawable.ic_arrow_back, callback = {
             navController.popBackStack()
         })
@@ -66,7 +67,6 @@ private fun Content(innerPadding: PaddingValues) {
 @Composable
 fun PreviewHelpScreen() {
     ThemeLayout {
-        val navController = rememberNavController()
-        HelpScreen(navController = navController)
+        HelpScreen()
     }
 }

@@ -17,25 +17,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.perracolabs.yasc.R
+import com.perracolabs.yasc.ui.LocalDrawerState
+import com.perracolabs.yasc.ui.LocalNavHostController
 import com.perracolabs.yasc.ui.navigation.Route
 import com.perracolabs.yasc.ui.navigation.navigateSingleTop
 import com.perracolabs.yasc.ui.themes.ThemeLayout
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 /**
  * Renders the content section of the drawer. This is the list of action items.
- *
- * @param navController The NavController used for navigation.
- * @param drawerState The DrawerState representing the state of the drawer (open/closed).
  */
 @Composable
-fun DrawerContent(
-    navController: NavController,
-    drawerState: DrawerState
-) {
-    val selectedItem = remember { mutableStateOf(Route.HOME) }
+fun DrawerContent() {
+    val selectedItem: MutableState<Route> = remember { mutableStateOf(Route.HOME) }
+    val navController: NavController = LocalNavHostController.current
 
     LaunchedEffect(navController) {
         // Keep the selected drawer item in sync with the current navigation destination.
@@ -55,8 +52,6 @@ fun DrawerContent(
         listOf(Route.HOME, Route.DETAIL).forEach { item ->
             DrawerItem(
                 route = item,
-                navController = navController,
-                drawerState = drawerState,
                 selectedItem = selectedItem
             )
         }
@@ -65,8 +60,6 @@ fun DrawerContent(
 
         DrawerItem(
             route = Route.HELP,
-            navController = navController,
-            drawerState = drawerState,
             selectedItem = selectedItem
         )
     }
@@ -76,18 +69,16 @@ fun DrawerContent(
  * A DrawerItem Composable to display individual navigation items.
  *
  * @param route The navigation route associated with this item.
- * @param navController The NavController used for navigation.
- * @param drawerState The DrawerState representing the state of the drawer (open/closed).
  * @param selectedItem The mutable state that tracks the currently selected item.
  */
 @Composable
 private fun DrawerItem(
     route: Route,
-    navController: NavController,
-    drawerState: DrawerState,
     selectedItem: MutableState<Route>,
 ) {
-    val scope = rememberCoroutineScope()
+    val scope: CoroutineScope = rememberCoroutineScope()
+    val navController: NavController = LocalNavHostController.current
+    val drawerState: DrawerState = LocalDrawerState.current
 
     NavigationDrawerItem(
         icon = {
@@ -132,8 +123,6 @@ private fun DrawerItem(
 @Composable
 fun PreviewDrawerContent() {
     ThemeLayout {
-        val navController = rememberNavController()
-        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        DrawerContent(navController = navController, drawerState = drawerState)
+        DrawerContent()
     }
 }
