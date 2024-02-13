@@ -26,6 +26,7 @@ import com.perracolabs.yasc.ui.screens.help.helpScreen
 import com.perracolabs.yasc.ui.screens.home.homeScreen
 import com.perracolabs.yasc.ui.screens.settings.settingsScreen
 import com.perracolabs.yasc.ui.themes.ThemeLayout
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 /**
@@ -34,9 +35,9 @@ import kotlinx.coroutines.launch
  */
 @Composable
 fun MainLayout(initialDrawerState: DrawerValue = DrawerValue.Closed) {
-    val navController = rememberNavController()
-    val drawerState = rememberDrawerState(initialValue = initialDrawerState)
-    val scope = rememberCoroutineScope()
+    val navController: NavHostController = rememberNavController()
+    val drawerState: DrawerState = rememberDrawerState(initialValue = initialDrawerState)
+    val scope: CoroutineScope = rememberCoroutineScope()
 
     CompositionLocalProvider(
         LocalNavHostController provides navController,
