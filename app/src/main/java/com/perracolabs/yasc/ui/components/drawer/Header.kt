@@ -57,7 +57,7 @@ fun DrawerHeader(navController: NavController, drawerState: DrawerState) {
     ) {
         Logo()
 
-        Row(modifier = Modifier.align(Alignment.TopEnd)) {
+        Row(modifier = Modifier.align(alignment = Alignment.TopEnd)) {
             ThemeButton()
             SettingsButton(navController = navController, drawerState = drawerState)
         }
@@ -73,12 +73,12 @@ private fun Logo() {
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(dimensionResource(id = R.dimen.drawer_header_padding))
+        modifier = Modifier.padding(all = dimensionResource(id = R.dimen.drawer_header_padding))
     ) {
         Image(
             painter = iconPainter,
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.surfaceTint),
+            colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.surfaceTint),
             modifier = Modifier
                 .size(dimensionResource(id = R.dimen.drawer_logo_size))
                 .clip(CircleShape)
@@ -86,7 +86,7 @@ private fun Logo() {
         Text(
             text = stringResource(id = R.string.app_name),
             color = MaterialTheme.colorScheme.surfaceTint,
-            modifier = Modifier.offset(0.dp, 8.dp)
+            modifier = Modifier.offset(x = 0.dp, y = 8.dp)
         )
     }
 }
@@ -107,7 +107,7 @@ private fun SettingsButton(
 
     ImageActionButton(icon = icon) {
         scope.launch {
-            delay(150)
+            delay(timeMillis = 150L)
 
             navController.navigateSingleTop(
                 route = Route.SETTINGS,
@@ -125,7 +125,7 @@ private fun ThemeButton() {
     val themeViewModel = obtainThemeViewModel()
     val currentTheme by themeViewModel.theme
     val isSystemDark = isSystemInDarkTheme()
-    val icon = rememberVectorPainter(image = ImageVector.vectorResource(currentTheme.icon(isSystemDark)))
+    val icon = rememberVectorPainter(image = ImageVector.vectorResource(id = currentTheme.icon(isSystemDark)))
     val view = LocalView.current.rootView
 
     ImageActionButton(icon = icon, showIndication = false) { centerOffset ->
@@ -146,6 +146,6 @@ fun PreviewDrawerHeader() {
     ThemeLayout {
         val navController = rememberNavController()
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        DrawerHeader(navController, drawerState)
+        DrawerHeader(navController = navController, drawerState = drawerState)
     }
 }

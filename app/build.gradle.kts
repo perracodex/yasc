@@ -39,7 +39,8 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -62,26 +63,26 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
 
     // Material Design.
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
 
     // Compose.
-    implementation("androidx.activity:activity-compose:1.8.0")
-    implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.compose.ui:ui:1.5.4")
-    implementation("androidx.compose.ui:ui-graphics:1.5.4")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.5.4")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
-    implementation("androidx.compose.ui:ui-graphics:1.5.4")
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.ui:ui:1.6.1")
+    implementation("androidx.compose.ui:ui-graphics:1.6.1")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.6.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.6.1")
+    implementation("androidx.compose.ui:ui-graphics:1.6.1")
 
     // Compose navigation.
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // LiveData.
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     // Kotlin's coroutines.
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -89,7 +90,7 @@ dependencies {
 
     // Kotlin's serialization. Used for different serialization tasks,
     // for example when de-serializing entities retrieved from a remote data source.
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
     // Dependency injection dependencies.
     // https://developer.android.com/training/dependency-injection/hilt-android
@@ -103,7 +104,7 @@ dependencies {
 
     // Datastore.
     // https://developer.android.com/topic/libraries/architecture/datastore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.0-beta01")
 
     // Unit testing.
     testImplementation("junit:junit:4.13.2")

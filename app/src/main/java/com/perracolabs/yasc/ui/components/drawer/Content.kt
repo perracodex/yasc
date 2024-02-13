@@ -42,7 +42,7 @@ fun DrawerContent(
         // This ensures accurate drawer item selection even when navigation occurs through
         // other methods, such as like the back button.
         navController.currentBackStackEntryFlow.collect { backStackEntry: NavBackStackEntry ->
-            val currentRoute = Route.parse(backStackEntry.destination.route)
+            val currentRoute = Route.parse(name = backStackEntry.destination.route)
             selectedItem.value = currentRoute
         }
     }
@@ -93,7 +93,7 @@ private fun DrawerItem(
         icon = {
             Icon(
                 painter = painterResource(id = route.icon),
-                modifier = Modifier.size (dimensionResource(id = R.dimen.drawer_item_icon_size)),
+                modifier = Modifier.size(dimensionResource(id = R.dimen.drawer_item_icon_size)),
                 contentDescription = null
             )
         },
@@ -134,6 +134,6 @@ fun PreviewDrawerContent() {
     ThemeLayout {
         val navController = rememberNavController()
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        DrawerContent(navController, drawerState)
+        DrawerContent(navController = navController, drawerState = drawerState)
     }
 }

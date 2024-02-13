@@ -16,13 +16,13 @@ import com.perracolabs.yasc.system.settings.groups.UiSettings
  */
 class AppSettings private constructor(context: Context) {
 
-    val uiSettings: UiSettings = UiSettings(context)
+    val uiSettings: UiSettings = UiSettings(context = context)
 
     companion object {
         private var instance: AppSettings? = null
 
         operator fun invoke(context: Context): AppSettings {
-            return instance ?: synchronized(this) {
+            return instance ?: synchronized(lock = this) {
                 instance ?: AppSettings(context).also { instance = it }
             }
         }
@@ -30,4 +30,4 @@ class AppSettings private constructor(context: Context) {
 }
 
 val Context.appSettings: AppSettings
-    get() = AppSettings(this)
+    get() = AppSettings(context = this)

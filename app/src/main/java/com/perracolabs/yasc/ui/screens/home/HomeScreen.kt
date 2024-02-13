@@ -119,6 +119,6 @@ private fun ShowMessage(onDismiss: () -> Unit) {
 fun PreviewHomeScreen() {
     ThemeLayout {
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        HomeScreen(drawerState)
+        HomeScreen(drawerState = drawerState)
     }
 }

@@ -67,6 +67,6 @@ private fun Content(innerPadding: PaddingValues) {
 fun PreviewHelpScreen() {
     ThemeLayout {
         val navController = rememberNavController()
-        HelpScreen(navController)
+        HelpScreen(navController = navController)
     }
 }

@@ -20,16 +20,16 @@ import kotlinx.coroutines.flow.first
  * @param context The application context.
  */
 class UiSettings(context: Context) : AbsSettingsGroup(context = context, settingsName = SETTINGS_NAME) {
-    val theme: Flow<Theme> = readOperation(settingKeyName=KEY_THEME.name) {
-        Theme.parse(dataStore.data.first()[KEY_THEME])
+    val theme: Flow<Theme> = readOperation(settingKeyName = KEY_THEME.name) {
+        Theme.parse(id = dataStore.data.first()[KEY_THEME])
     }
 
     fun theme(theme: Theme) {
-        writeOperation(settingKeyName=KEY_THEME.name) { dataStore.edit { it[KEY_THEME] = theme.id } }
+        writeOperation(settingKeyName = KEY_THEME.name) { dataStore.edit { it[KEY_THEME] = theme.id } }
     }
 
     companion object {
         private const val SETTINGS_NAME = "ui_settings"
-        private val KEY_THEME = intPreferencesKey(name="theme")
+        private val KEY_THEME = intPreferencesKey(name = "theme")
     }
 }

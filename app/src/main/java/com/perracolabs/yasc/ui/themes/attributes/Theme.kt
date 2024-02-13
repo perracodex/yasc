@@ -15,9 +15,9 @@ import com.perracolabs.yasc.R
  * @param id The identifier for each theme.
  */
 enum class Theme(val id: Int) {
-    SYSTEM(0),
-    LIGHT(1),
-    DARK(2);
+    SYSTEM(id = 0),
+    LIGHT(id = 1),
+    DARK(id = 2);
 
     companion object {
         /**

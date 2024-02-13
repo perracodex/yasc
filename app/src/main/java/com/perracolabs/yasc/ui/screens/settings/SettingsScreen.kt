@@ -21,5 +21,5 @@ fun SettingsScreen(navController: NavController) {
 @Composable
 fun PreviewSettingsScreen() {
     val navController = rememberNavController()
-    SettingsScreen(navController)
+    SettingsScreen(navController = navController)
 }

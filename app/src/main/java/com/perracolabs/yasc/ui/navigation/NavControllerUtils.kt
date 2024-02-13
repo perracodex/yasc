@@ -20,8 +20,8 @@ import androidx.navigation.Navigator
 fun NavController.navigateSingleTop(route: Route, navigatorExtras: Navigator.Extras? = null) {
 
     val navOptions = NavOptions.Builder()
-        .setLaunchSingleTop(true)
-        .setPopUpTo(route.name, inclusive = false)
+        .setLaunchSingleTop(singleTop = true)
+        .setPopUpTo(route = route.name, inclusive = false)
         .build()
 
     this.navigate(

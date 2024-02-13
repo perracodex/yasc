@@ -52,6 +52,6 @@ fun PreviewDrawer() {
     ThemeLayout {
         val navController = rememberNavController()
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        DrawerSheet(navController, drawerState)
+        DrawerSheet(navController = navController, drawerState = drawerState)
     }
 }

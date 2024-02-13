@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.perracolabs.yasc.R
-import com.perracolabs.yasc.ui.components.bars.MainAppBar
 import com.perracolabs.yasc.ui.components.bars.AppBarAction
+import com.perracolabs.yasc.ui.components.bars.MainAppBar
 import com.perracolabs.yasc.ui.navigation.Route
 import com.perracolabs.yasc.ui.themes.ThemeLayout
 
@@ -55,7 +55,7 @@ private fun Content(innerPadding: PaddingValues) {
         modifier = Modifier
             .background(color = MaterialTheme.colorScheme.surface)
             .fillMaxSize()
-            .padding(innerPadding)
+            .padding(paddingValues = innerPadding)
     ) {
 
     }
@@ -66,6 +66,6 @@ private fun Content(innerPadding: PaddingValues) {
 fun PreviewDetailScreen() {
     ThemeLayout {
         val navController = rememberNavController()
-        DetailScreen(navController)
+        DetailScreen(navController = navController)
     }
 }

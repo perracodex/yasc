@@ -72,7 +72,7 @@ abstract class AbsSettingsGroup(context: Context, private val settingsName: Stri
      * discriminate if editions are don't serially or in parallel.
      */
     private fun getMutex(settingKeyName: String): Mutex {
-        return mutexMap.getOrPut(key="$settingsName $settingKeyName") { Mutex() }
+        return mutexMap.getOrPut(key = "$settingsName $settingKeyName") { Mutex() }
     }
 
     companion object {
