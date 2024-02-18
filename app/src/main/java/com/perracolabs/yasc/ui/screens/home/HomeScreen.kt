@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -32,11 +31,22 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen() {
+    val items: List<String> = listOf("Songs", "Artists", "Playlists")
     val onAction = remember { mutableStateOf(false) }
+
+    // These should be moved to a dedicated ViewModel instead, left here just for the example simplicity.
+    val selectedItem: MutableState<Int> = remember { mutableIntStateOf(0) }
+    val selectedItemText: MutableState<String> = remember { mutableStateOf(items[0]) }
+
+    // Observe changes in selectedItem and update selectedItemText accordingly.
+    LaunchedEffect(selectedItem.value) {
+        selectedItemText.value = items[selectedItem.value]
+    }
 
     Scaffold(
         topBar = { TopBar(onAction = onAction) },
-        content = { innerPadding -> Content(innerPadding) }
+        content = { innerPadding -> Content(innerPadding, text=selectedItemText) },
+        bottomBar = { BottomBar(selectedItem = selectedItem, items = items) }
     )
 
     if (onAction.value) {
@@ -74,27 +84,31 @@ private fun TopBar(onAction: MutableState<Boolean>) {
 }
 
 @Composable
-private fun Content(innerPadding: PaddingValues) {
-    var selectedItem: Int by remember { mutableIntStateOf(0) }
-    val items: List<String> = listOf("Songs", "Artists", "Playlists")
-
+private fun Content(innerPadding: PaddingValues, text: MutableState<String>) {
     Box(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
             .fillMaxSize()
             .padding(innerPadding)
     ) {
-        NavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
-        ) {
-            items.forEachIndexed { index, item ->
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Favorite, contentDescription = item) },
-                    label = { Text(item) },
-                    selected = selectedItem == index,
-                    onClick = { selectedItem = index }
-                )
-            }
+        Text(
+            modifier = Modifier.align(alignment = androidx.compose.ui.Alignment.Center),
+            text = text.value
+        )
+    }
+}
+
+@Composable
+private fun BottomBar(selectedItem: MutableState<Int>, items: List<String>) {
+
+    NavigationBar {
+        items.forEachIndexed { index, item ->
+            NavigationBarItem(
+                icon = { Icon(Icons.Filled.Favorite, contentDescription = item) },
+                label = { Text(item) },
+                selected = selectedItem.value == index,
+                onClick = { selectedItem.value = index }
+            )
         }
     }
 }
@@ -113,7 +127,7 @@ private fun ShowMessage(onDismiss: () -> Unit) {
             }
         },
         title = { Text(text = stringResource(id = R.string.app_name)) },
-        text = { Text(text = "Hello World") }
+        text = { Text(text = "Hello Yasc") }
     )
 }
 
