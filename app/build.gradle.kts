@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Perraco Labs. All rights reserved.
+ * Copyright (c) 2023-Present Perraco. All rights reserved.
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>
  */
@@ -12,11 +12,11 @@ plugins {
 }
 
 android {
-    namespace = "com.perracolabs.yasc"
+    namespace = "com.perraco.yasc"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.perracolabs.yasc"
+        applicationId = "com.perraco.yasc"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
