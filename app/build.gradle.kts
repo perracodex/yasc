@@ -40,7 +40,7 @@ android {
     }
     composeOptions {
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-        kotlinCompilerExtensionVersion = "1.5.9"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -68,15 +68,15 @@ dependencies {
     // Compose.
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation("androidx.compose.material3:material3:1.2.0")
-    implementation("androidx.compose.ui:ui:1.6.1")
-    implementation("androidx.compose.ui:ui-graphics:1.6.1")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.6.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.6.1")
-    implementation("androidx.compose.ui:ui-graphics:1.6.1")
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.ui:ui:1.6.3")
+    implementation("androidx.compose.ui:ui-graphics:1.6.3")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.6.3")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.6.3")
+    implementation("androidx.compose.ui:ui-graphics:1.6.3")
 
     // Compose navigation.
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // LiveData.
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
@@ -94,17 +94,17 @@ dependencies {
 
     // Dependency injection dependencies.
     // https://developer.android.com/training/dependency-injection/hilt-android
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51")
 
     // Retrofit.
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.10.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.10.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.10.0")
 
     // Datastore.
     // https://developer.android.com/topic/libraries/architecture/datastore
-    implementation("androidx.datastore:datastore-preferences:1.1.0-beta01")
+    implementation("androidx.datastore:datastore-preferences:1.1.0-beta02")
 
     // Unit testing.
     testImplementation("junit:junit:4.13.2")
