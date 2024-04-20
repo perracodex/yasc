@@ -40,7 +40,7 @@ android {
     }
     composeOptions {
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -97,14 +97,15 @@ dependencies {
 
     // Dependency injection dependencies.
     // https://developer.android.com/training/dependency-injection/hilt-android
-    val hiltVersion = "2.51"
+    val hiltVersion = "2.51.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     // Retrofit.
-    implementation("com.squareup.retrofit2:retrofit:2.10.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.10.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.10.0")
+    val retrofitVersion = "2.11.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-scalars:$retrofitVersion")
 
     // Datastore.
     // https://developer.android.com/topic/libraries/architecture/datastore
