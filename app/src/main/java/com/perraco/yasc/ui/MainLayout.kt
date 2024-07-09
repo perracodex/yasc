@@ -7,14 +7,8 @@
 package com.perraco.yasc.ui
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.material3.DrawerState
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.rememberDrawerState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -38,10 +32,12 @@ fun MainLayout(initialDrawerState: DrawerValue = DrawerValue.Closed) {
     val navController: NavHostController = rememberNavController()
     val drawerState: DrawerState = rememberDrawerState(initialValue = initialDrawerState)
     val scope: CoroutineScope = rememberCoroutineScope()
+    val snackbarHostState: SnackbarHostState by remember { mutableStateOf(SnackbarHostState()) }
 
     CompositionLocalProvider(
         LocalNavHostController provides navController,
-        LocalDrawerState provides drawerState
+        LocalDrawerState provides drawerState,
+        LocalSnackbarHostState provides snackbarHostState
     ) {
         ThemeLayout {
             ModalNavigationDrawer(
@@ -67,6 +63,7 @@ fun MainLayout(initialDrawerState: DrawerValue = DrawerValue.Closed) {
 
 val LocalDrawerState = compositionLocalOf<DrawerState> { error("No DrawerState found.") }
 val LocalNavHostController = compositionLocalOf<NavHostController> { error("No NavHostController found.") }
+val LocalSnackbarHostState = compositionLocalOf<SnackbarHostState> { error("No SnackbarHostState found.") }
 
 @Preview(showBackground = true)
 @Composable
