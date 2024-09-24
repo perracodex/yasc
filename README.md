@@ -1,6 +1,6 @@
 ### Animated Theme Ripple Transition in Android Compose.
 
-Demonstrates a ripple-like theme transition in Android Compose, offering a visually appealing
+Demonstrates a ripple-like theme transition using Android Compose, offering a visually appealing
 switch between different themes.
 
 #### In addition, the following simple examples are also included:
